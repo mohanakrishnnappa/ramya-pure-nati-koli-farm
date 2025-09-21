@@ -39,6 +39,8 @@
     line-height: 1.7;
     font-size: 16px;
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
   }
 
   /* Modern header with gradient */
@@ -85,11 +87,13 @@
   .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 70px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .nav-logo {
@@ -147,7 +151,9 @@
   main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 3rem 2rem 6rem;
+    padding: 3rem 1rem 6rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   /* Modern hero section */
@@ -169,7 +175,9 @@
 
   .hero-content {
     max-width: 600px;
-    padding: 2rem;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .hero h2 {
@@ -212,9 +220,10 @@
   /* Modern card-based image grid */
   .image-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
+    width: 100%;
   }
 
   .image-card {
@@ -262,9 +271,10 @@
   /* Modern features list */
   .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
+    width: 100%;
   }
 
   .feature-card {
@@ -312,15 +322,18 @@
   /* Modern contact form */
   .contact-section {
     background: var(--warm-white);
-    padding: 4rem 2rem;
+    padding: 2rem 1rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-lg);
     margin-top: 3rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .contact-form {
     max-width: 600px;
     margin: 0 auto;
+    width: 100%;
   }
 
   .form-group {
@@ -337,6 +350,7 @@
   .form-group input,
   .form-group textarea {
     width: 100%;
+    max-width: 100%;
     padding: 1rem;
     border: 2px solid var(--border-light);
     border-radius: 8px;
@@ -344,6 +358,7 @@
     font-family: inherit;
     transition: var(--transition);
     background: var(--light-cream);
+    box-sizing: border-box;
   }
 
   .form-group input:focus,
@@ -415,6 +430,10 @@
 
   /* Responsive design */
   @media (max-width: 768px) {
+    body {
+      font-size: 14px;
+    }
+
     .nav-container {
       padding: 0 1rem;
     }
@@ -469,35 +488,66 @@
       padding: 2rem 1rem 4rem;
     }
 
+    .hero-content {
+      padding: 1rem 0.5rem;
+    }
+
     .hero {
       height: 50vh;
       min-height: 300px;
+      margin-left: 0;
+      margin-right: 0;
     }
 
     .image-grid {
       grid-template-columns: 1fr;
       gap: 1.5rem;
+      margin-left: 0;
+      margin-right: 0;
     }
 
     .features-grid {
       grid-template-columns: 1fr;
       gap: 1.5rem;
+      margin-left: 0;
+      margin-right: 0;
     }
 
     .contact-section {
-      padding: 2rem 1rem;
-      margin: 2rem -1rem 0;
-      border-radius: 0;
+      padding: 1.5rem 1rem;
+      margin: 2rem 0 0;
+      border-radius: var(--border-radius);
     }
 
     section h2 {
       font-size: 2rem;
     }
+
+    section p {
+      padding: 0 0.5rem;
+    }
   }
 
   @media (max-width: 480px) {
+    * {
+      max-width: 100%;
+    }
+
+    body {
+      font-size: 14px;
+    }
+
+    main {
+      padding: 1.5rem 0.75rem 3rem;
+    }
+
     header h1 {
       font-size: 1.8rem;
+      padding: 0 1rem;
+    }
+
+    .hero-content {
+      padding: 1rem 0.75rem;
     }
 
     .hero h2 {
@@ -506,6 +556,39 @@
 
     .hero p {
       font-size: 1rem;
+    }
+
+    .image-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin: 2rem 0 0;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin: 2rem 0 0;
+    }
+
+    .contact-section {
+      padding: 1rem 0.75rem;
+      margin: 1.5rem 0 0;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 0.75rem;
+      font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    section h2 {
+      font-size: 1.75rem;
+      padding: 0 0.5rem;
+    }
+
+    section p {
+      font-size: 1rem;
+      padding: 0 0.75rem;
     }
   }
 
