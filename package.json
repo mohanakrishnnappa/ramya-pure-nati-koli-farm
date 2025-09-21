@@ -1,0 +1,17 @@
+{
+  "name": "ramya-pure-nati-koli-farm",
+  "version": "1.0.0",
+  "description": "Ramya Pure Nati Koli Farm - Pure Native Chicken Farm Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "mkdir -p dist && cp index.html dist/",
+    "preview": "npx serve dist"
+  },
+  "keywords": ["farm", "chicken", "nati-koli", "organic", "agriculture"],
+  "author": "Ramya Pure Nati Koli Farm",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
