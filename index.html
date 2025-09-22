@@ -275,11 +275,11 @@
     line-height: 1.5;
   }
 
-  /* Modern features list */
+  /* Modified features grid for 3 cards in one row */
   .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
     margin-top: 2.5rem;
     width: 100%;
     box-sizing: border-box;
@@ -287,7 +287,7 @@
 
   .feature-card {
     background: var(--warm-white);
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
     text-align: center;
@@ -302,30 +302,30 @@
   }
 
   .feature-icon {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     background: linear-gradient(135deg, var(--accent-gold), #f4d03f);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1rem;
-    font-size: 1.3rem;
+    margin: 0 auto 1.5rem;
+    font-size: 1.5rem;
   }
 
   .feature-card h3 {
     color: var(--primary-green);
     font-weight: 600;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
   }
 
   .feature-card p {
     color: var(--text-medium);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     text-align: center;
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   /* Modern contact form */
@@ -552,6 +552,7 @@
       padding: 1rem;
     }
 
+    /* Mobile features grid - single column */
     .features-grid {
       grid-template-columns: 1fr;
       gap: 1rem;
@@ -559,18 +560,37 @@
     }
 
     .feature-card {
-      padding: 1.25rem;
+      padding: 1.5rem;
     }
 
     .feature-icon {
-      width: 45px;
-      height: 45px;
-      font-size: 1.2rem;
+      width: 50px;
+      height: 50px;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
     }
 
     .contact-section {
       padding: 1.5rem 1rem;
       margin-top: 1.5rem;
+    }
+  }
+
+  /* Tablet adjustments for features */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .features-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      padding: 1.75rem 1.25rem;
+    }
+
+    .feature-icon {
+      width: 55px;
+      height: 55px;
+      font-size: 1.4rem;
     }
   }
 
@@ -627,13 +647,13 @@
     }
 
     .feature-card {
-      padding: 1rem;
+      padding: 1.25rem 1rem;
     }
 
     .feature-icon {
-      width: 40px;
-      height: 40px;
-      font-size: 1.1rem;
+      width: 45px;
+      height: 45px;
+      font-size: 1.2rem;
     }
 
     .contact-section {
