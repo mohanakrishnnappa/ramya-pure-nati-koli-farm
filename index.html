@@ -45,15 +45,6 @@
     padding: 0;
   }
 
-  /* Modern header with gradient */
-  header {
-    background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
-    padding: 1.5rem 1rem;
-    text-align: center;
-    color: white;
-    position: relative;
-    overflow: hidden;
-  }
 
   header::before {
     content: '';
@@ -76,7 +67,7 @@
     margin: 0;
   }
 
-  /* Modified header with sticky positioning */
+  /* Sticky header with gradient */
   header {
     background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
     padding: 1.5rem 1rem;
@@ -90,7 +81,26 @@
     box-shadow: var(--shadow-md);
   }
 
-  /* Modern navigation - Fixed mobile issues */
+  /* Make header sticky (on top) */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+  }
+
+  /* Make nav stick below header */
+  nav {
+    position: sticky;
+    top: 0; /* header renders first; flow keeps nav below header */
+    z-index: 1000;
+  }
+
+  /* Prevent anchor targets from hiding under sticky bars */
+  :target {
+    scroll-margin-top: 120px; /* tweak for your header+nav total height */
+  }
+
+  /* Navigation positioned below sticky header */
   nav {
     background: var(--warm-white);
     border-bottom: 1px solid var(--border-light);
@@ -129,7 +139,7 @@
     border: none;
     background: none;
     gap: 3px;
-    z-index: 1001;
+    z-index: 1002;
   }
 
   .menu-toggle span {
@@ -458,6 +468,10 @@
 
   /* Enhanced Mobile Responsive Design */
   @media (max-width: 768px) {
+    header {
+      padding: 1rem 0.5rem;
+    }
+
     .nav-container {
       height: 55px;
       padding: 0 0.75rem;
@@ -473,18 +487,18 @@
 
     ul.menu {
       position: fixed;
-      top: 55px;
+      top: 0;
       left: 0;
       right: 0;
       width: 100vw;
-      height: auto;
-      max-height: calc(100vh - 55px);
+      height: 100vh;
       background: var(--warm-white);
       flex-direction: column;
-      justify-content: flex-start;
-      padding: 1rem;
-      gap: 0;
-      transform: translateY(-100%);
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      gap: 2rem;
+      transform: translateX(-100%);
       transition: var(--transition);
       box-shadow: var(--shadow-lg);
       opacity: 0;
@@ -493,26 +507,31 @@
     }
 
     ul.menu.active {
-      transform: translateY(0);
+      transform: translateX(0);
       opacity: 1;
       visibility: visible;
     }
 
     ul.menu li {
-      width: 100%;
+      width: auto;
       margin: 0;
     }
 
     ul.menu li a {
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid var(--border-light);
-      text-align: left;
+      padding: 1rem 2rem;
+      border: 2px solid var(--border-light);
+      border-radius: 8px;
+      text-align: center;
       display: block;
-      width: 100%;
+      width: auto;
+      font-size: 1.1rem;
+      min-width: 200px;
     }
 
-    ul.menu li:last-child a {
-      border-bottom: none;
+    ul.menu li a:hover {
+      border-color: var(--primary-green);
+      background: var(--primary-green);
+      color: white;
     }
 
     .menu-toggle.active span:nth-child(1) {
@@ -610,6 +629,10 @@
 
   /* Extra small mobile devices */
   @media (max-width: 480px) {
+    header {
+      padding: 0.75rem 0.5rem;
+    }
+
     .nav-container {
       padding: 0 0.5rem;
       height: 50px;
@@ -619,17 +642,8 @@
       font-size: 1rem;
     }
 
-    ul.menu {
-      top: 50px;
-      padding: 0.75rem;
-    }
-
     main {
       padding: 0.75rem 0.5rem 1.5rem;
-    }
-
-    header {
-      padding: 1rem 0.5rem;
     }
 
     .hero {
@@ -736,7 +750,7 @@
 
 <nav>
   <div class="nav-container">
-    <a href="#" class="nav-logo">RPNK Farm</a>
+    <a href="/" class="nav-logo">RPNK Farm</a>
     <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="Toggle menu">
       <span></span>
       <span></span>
@@ -980,7 +994,11 @@
 
   // Prevent body scroll when mobile menu is open
   menuToggle.addEventListener('click', () => {
-    document.body.style.overflow = menu.classList.contains('active') ? '' : 'hidden';
+    if (menu.classList.contains('active')) {
+      document.body.style.overflow = '';
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
   });
 
   // Reset body scroll on window resize
