@@ -76,6 +76,20 @@
     margin: 0;
   }
 
+  /* Modified header with sticky positioning */
+  header {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-md);
+  }
+
   /* Modern navigation - Fixed mobile issues */
   nav {
     background: var(--warm-white);
